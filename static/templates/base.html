@@ -14,13 +14,15 @@
     <!-- cdn google font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <!-- cdn custom css -->
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
 </head>
 <body>
     {% block content %}
 
     {% endblock %}
     
-    <script src="js/index.js"></script>
+    <script src="{{url_for('static', filename='js/index.js')}}"></script>
+    {% block javascript %}
+    {% endblock %}
 </body>
 </html>

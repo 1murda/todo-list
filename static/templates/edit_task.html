@@ -14,9 +14,12 @@
                         <label for="description">Description</label>
                         <input class="form-control" id="description" placeholder="{{ task[2] }}" name="description" rows="3"></input>
                     </div>
-                    <button type="submit" class="btn btn-primary">Edit Task</button>
+                    <button id="edit-button" type="submit" class="btn btn-primary">Edit Task</button>
                 </form>
             </div>
         </div>
     </div>
+    {% endblock %}
+    {% block javascript %}
+    <script src="{{url_for('static', filename='js/edit_delete.js')}}"></script>
     {% endblock %}

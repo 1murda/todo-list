@@ -50,7 +50,7 @@ def addtask():
             return redirect(url_for('todolist'))
         
         except:
-            return "Error al agregar la tarea"
+            return "Error trying to add task"
     
     else:
         return render_template('add_task.html')
@@ -71,7 +71,7 @@ def edit(id):
             connect.commit()
             return redirect(url_for('todolist'))
         except:
-            return "Error al editar la tarea"
+            return "Error trying to edit task"
     else:
         cursor = connect.cursor()
         cursor.execute("SELECT * FROM task WHERE id = {}".format(id))
