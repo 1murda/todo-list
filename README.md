@@ -1,5 +1,5 @@
 # todo-list
-pip install -r `requirements.txt`
+install dependencies `pip install -r requirements.txt`
 
 ## tools
 * Bootstrap
