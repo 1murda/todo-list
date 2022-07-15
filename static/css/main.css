@@ -1,0 +1,22 @@
+*{
+    font-family: entoregular, sans-serif;
+    font-size: 16px;
+    color: black;
+}
+
+.row-1{
+    /* borde violeta redondeado */
+    padding: 10px;
+    margin: 10px;
+    padding-top: 100px;
+}
+body{
+    background: rgb(60,31,103);
+    background: linear-gradient(90deg, rgba(60,31,103,1) 33%, rgba(31,30,51,1) 100%, rgba(0,212,255,1) 100%);
+}
+.content{
+    margin-top: 60px;
+}
+#add-task-button{
+    margin-left: 12px;
+}
