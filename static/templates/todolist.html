@@ -23,8 +23,8 @@
                                 <td>{{ task[1] }}</td>
                                 <td>{{ task[2] }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-warning">Edit</a>
-                                    <a href="#" class="btn btn-danger">Delete</a>
+                                    <a href="/edit/{{ task[0] }}" class="btn btn-warning">Edit</a>
+                                    <a href="/delete/{{ task[0] }}" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         {% endfor %}

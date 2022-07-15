@@ -22,8 +22,11 @@ def index():
 
 @app.route('/todolist')
 def todolist():
-    # guardo en una lista las tareas sacadas de la base de datos sqlite en la tabla task
-    
+    """ busco todas las tareas en la base de datos
+
+    Returns:
+        render_template: renderiza la pagina todolist.html
+    """
     cursor = connect.cursor()
     cursor.execute("SELECT * FROM task")
     tasks = cursor.fetchall()
@@ -32,6 +35,11 @@ def todolist():
 
 @app.route('/addtask', methods=['POST', 'GET'])
 def addtask():
+    """ agrega una tarea a la base de datos
+
+    Returns:
+        render_template: renderiza la pagina todolist.html
+    """
     if request.method == 'POST':
         try:
             task = request.form['task']
@@ -46,6 +54,29 @@ def addtask():
     
     else:
         return render_template('add_task.html')
+
+@app.route('/delete/<int:id>')
+def delete(id):
+    connect.execute("DELETE FROM task WHERE id = {}".format(id))
+    connect.commit()
+    return redirect(url_for('todolist'))
+
+@app.route('/edit/<int:id>', methods=['POST', 'GET'])
+def edit(id):
+    if request.method == 'POST':
+        try:
+            task = request.form['task']
+            description = request.form['description']
+            connect.execute("UPDATE task SET task = '{}', description = '{}' WHERE id = {}".format(task, description, id))
+            connect.commit()
+            return redirect(url_for('todolist'))
+        except:
+            return "Error al editar la tarea"
+    else:
+        cursor = connect.cursor()
+        cursor.execute("SELECT * FROM task WHERE id = {}".format(id))
+        task = cursor.fetchone()
+        return render_template('edit_task.html', task=task)
 
 
 if __name__ == "__main__":
